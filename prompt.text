@@ -1,4 +1,4 @@
-Please create a quiz based on the following input content (including the language), with a difficulty level of [difficulty] (on a scale of 0 to 1). Return the quiz exclusively as JSON data in the format provided below.
+Please create a quiz based on the following input content. The quiz must be written in the same language as the provided input content. The difficulty level is [difficulty] (on a scale of 0 to 1, where 1 represents the highest difficulty). Return the quiz exclusively as JSON data in the format provided below.
 
 Guidelines:
 Generate a fitting and engaging but very short title for the quiz.

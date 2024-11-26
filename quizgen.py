@@ -141,15 +141,23 @@ def get_html_response(input_text, difficulty_level):
 
     return f"A new quiz titled '{quiz_title}' with difficulty {difficulty} has been created."
 
-def download_file():
+def save_quiz_file():
     """
     Saves the generated quiz with a unique name based on title and difficulty.
+    Ensures the directory exists before saving the file.
     """
-    global title
+    global title, difficulty, SAVED_DIR, BASE_DIR, QUIZ_FILE
+    
+    # Construct the directory path and file name
     new_name = f"{SAVED_DIR}/{title}_diff:{difficulty:.3f}.html"
     new_path = os.path.join(BASE_DIR, new_name)
 
+    # Ensure the directory exists
+    os.makedirs(os.path.dirname(new_path), exist_ok=True)
+    
+    # Copy the file to the new path
     shutil.copy2(QUIZ_FILE, new_path)
+
 
 def open_file(files):
     """
@@ -184,7 +192,7 @@ with gr.Blocks() as demo:
 
     # Action bindings
     gen_button.click(get_html_response, inputs=[input_box, slider], outputs=chatbot_response)
-    save_button.click(fn=download_file).then(None, js="window.location.reload()")
+    save_button.click(fn=save_quiz_file).then(None, js="window.location.reload()")
     open_button.click(fn=open_file, inputs=output_box)
 
 demo.launch()

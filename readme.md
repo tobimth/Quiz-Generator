@@ -45,7 +45,7 @@ To set up the **Quiz Generator**, follow these steps:
 
 ## Running the Application
 
-To set up the **File Inbox Manager**, follow these steps:
+To set up the **Quiz Generator**, follow these steps:
 1. **Before starting**
 
     You need to set your Mistral Api Key as environment variable.
@@ -59,7 +59,7 @@ To set up the **File Inbox Manager**, follow these steps:
     ```
 1. **Start the Program**: 
     ```bash
-    python quizGen.py
+    python quizgen.py
     ```
 2. **Access the Interface**:
     - The application uses a web-based GUI powered by Gradio.
