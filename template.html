@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .question {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .answers button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .answers button.correct {
+            background-color: #4CAF50; /* Green for correct */
+            color: white;
+        }
+        .answers button.correct-highlight {
+            background-color: #d4edda; /* Light green for correct highlight */
+        }
+        .answers button.wrong {
+            background-color: #F44336; /* Red for wrong */
+            color: white;
+        }
+        .answers button:disabled {
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function checkAnswer(button, isCorrect, questionId) {
+            const buttons = document.querySelectorAll('[data-question-id="' + questionId + '"]');
+            const correctButton = Array.from(buttons).find(btn => btn.dataset.correct === "true");
+
+            buttons.forEach(btn => btn.disabled = true); // Disable all buttons for this question
+
+            if (isCorrect) {
+                button.classList.add('correct');
+                button.textContent += " ✓ Correct!";
+            } else {
+                button.classList.add('wrong');
+                button.textContent += " ✗ Wrong!";
+                if (correctButton) {
+                    correctButton.classList.add('correct-highlight');
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">{{title}}</h1>
+        {{questions}}
+    </div>
+</body>
+</html>

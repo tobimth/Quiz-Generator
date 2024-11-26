@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aachen: The Westernmost German City</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .question {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .answers button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .answers button.correct {
+            background-color: #4CAF50; /* Green for correct */
+            color: white;
+        }
+        .answers button.correct-highlight {
+            background-color: #d4edda; /* Light green for correct highlight */
+        }
+        .answers button.wrong {
+            background-color: #F44336; /* Red for wrong */
+            color: white;
+        }
+        .answers button:disabled {
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function checkAnswer(button, isCorrect, questionId) {
+            const buttons = document.querySelectorAll('[data-question-id="' + questionId + '"]');
+            const correctButton = Array.from(buttons).find(btn => btn.dataset.correct === "true");
+
+            buttons.forEach(btn => btn.disabled = true); // Disable all buttons for this question
+
+            if (isCorrect) {
+                button.classList.add('correct');
+                button.textContent += " ✓ Correct!";
+            } else {
+                button.classList.add('wrong');
+                button.textContent += " ✗ Wrong!";
+                if (correctButton) {
+                    correctButton.classList.add('correct-highlight');
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Aachen: The Westernmost German City</h1>
+        
+        <div class="question" id="question-1">
+            <h2>What is the pronunciation of 'Aachen' in German?</h2>
+            <div class="answers">
+
+                <button 
+                    data-question-id="1" 
+                    data-correct="false" 
+                    onclick="checkAnswer(this, false, 1)">
+                    Ah-ken
+                </button>
+
+                <button 
+                    data-question-id="1" 
+                    data-correct="false" 
+                    onclick="checkAnswer(this, false, 1)">
+                    Ah-chen
+                </button>
+
+                <button 
+                    data-question-id="1" 
+                    data-correct="true" 
+                    onclick="checkAnswer(this, true, 1)">
+                    Ah-xen
+                </button>
+
+                <button 
+                    data-question-id="1" 
+                    data-correct="false" 
+                    onclick="checkAnswer(this, false, 1)">
+                    Ah-sehn
+                </button>
+
+            </div>
+        </div>
+
+        <div class="question" id="question-2">
+            <h2>Which of the following is NOT a neighboring country of Aachen?</h2>
+            <div class="answers">
+
+                <button 
+                    data-question-id="2" 
+                    data-correct="false" 
+                    onclick="checkAnswer(this, false, 2)">
+                    Netherlands
+                </button>
+
+                <button 
+                    data-question-id="2" 
+                    data-correct="false" 
+                    onclick="checkAnswer(this, false, 2)">
+                    Belgium
+                </button>
+
+                <button 
+                    data-question-id="2" 
+                    data-correct="true" 
+                    onclick="checkAnswer(this, true, 2)">
+                    France
+                </button>
+
+                <button 
+                    data-question-id="2" 
+                    data-correct="false" 
+                    onclick="checkAnswer(this, false, 2)">
+                    Germany
+                </button>
+
+            </div>
+        </div>
+
+        <div class="question" id="question-3">
+            <h2>What is the name of the prestigious university in Aachen?</h2>
+            <div class="answers">
+
+                <button 
+                    data-question-id="3" 
+                    data-correct="false" 
+                    onclick="checkAnswer(this, false, 3)">
+                    University of Aachen
+                </button>
+
+                <button 
+                    data-question-id="3" 
+                    data-correct="true" 
+                    onclick="checkAnswer(this, true, 3)">
+                    RWTH Aachen
+                </button>
+
+                <button 
+                    data-question-id="3" 
+                    data-correct="false" 
+                    onclick="checkAnswer(this, false, 3)">
+                    Aachen Technical University
+                </button>
+
+                <button 
+                    data-question-id="3" 
+                    data-correct="false" 
+                    onclick="checkAnswer(this, false, 3)">
+                    Aachen University of Applied Sciences
+                </button>
+
+            </div>
+        </div>
+
+        <div class="question" id="question-4">
+            <h2>Which of the following is NOT a famous event held in Aachen?</h2>
+            <div class="answers">
+
+                <button 
+                    data-question-id="4" 
+                    data-correct="false" 
+                    onclick="checkAnswer(this, false, 4)">
+                    CHIO Aachen
+                </button>
+
+                <button 
+                    data-question-id="4" 
+                    data-correct="false" 
+                    onclick="checkAnswer(this, false, 4)">
+                    Aachen Christmas Market
+                </button>
+
+                <button 
+                    data-question-id="4" 
+                    data-correct="true" 
+                    onclick="checkAnswer(this, true, 4)">
+                    Aachen Marathon
+                </button>
+
+                <button 
+                    data-question-id="4" 
+                    data-correct="false" 
+                    onclick="checkAnswer(this, false, 4)">
+                    International Karlspreis Award
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
